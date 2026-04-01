@@ -24,10 +24,5 @@
   "engines": {
     "node": ">=20.0.0"
   },
-  "dependencies": {
-    "react": "^19.2.4",
-    "react-router-dom": "^7.13.2",
-    "socket.io-client": "^4.8.3",
-    "tailwindcss-animate": "^1.0.7"
-  }
+  "dependencies": {}
 }
