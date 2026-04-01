@@ -74,20 +74,20 @@ export default function ClientDashboard() {
           </header>
 
           {/* Stats cards */}
-          <section className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            <Card className="p-5">
+          <section className="grid grid-cols-2 lg:grid-cols-4 gap-4 stagger-children">
+            <Card className="p-5 transition-all duration-250 ease-out hover:shadow-soft-lg hover:-translate-y-0.5 hover:border-slate-300">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 bg-trust-green-light rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-trust-green-light rounded-lg flex items-center justify-center transition-transform duration-200 group-hover:scale-110">
                   <svg className="w-5 h-5 text-trust-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                   </svg>
                 </div>
               </div>
               <p className="text-sm font-medium text-slate-500">In Escrow</p>
-              <p className="text-2xl font-bold text-trust-green mt-1">₹{inEscrow.toLocaleString()}</p>
+              <p className="text-2xl font-bold text-trust-green mt-1">&#8377;{inEscrow.toLocaleString()}</p>
             </Card>
 
-            <Card className="p-5">
+            <Card className="p-5 transition-all duration-250 ease-out hover:shadow-soft-lg hover:-translate-y-0.5 hover:border-slate-300">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center">
                   <svg className="w-5 h-5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -96,10 +96,10 @@ export default function ClientDashboard() {
                 </div>
               </div>
               <p className="text-sm font-medium text-slate-500">Released</p>
-              <p className="text-2xl font-bold text-slate-900 mt-1">₹{released.toLocaleString()}</p>
+              <p className="text-2xl font-bold text-slate-900 mt-1">&#8377;{released.toLocaleString()}</p>
             </Card>
 
-            <Card className="p-5">
+            <Card className="p-5 transition-all duration-250 ease-out hover:shadow-soft-lg hover:-translate-y-0.5 hover:border-slate-300">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 bg-trust-blue-light rounded-lg flex items-center justify-center">
                   <svg className="w-5 h-5 text-trust-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -111,7 +111,7 @@ export default function ClientDashboard() {
               <p className="text-2xl font-bold text-slate-900 mt-1">{activeProjects}</p>
             </Card>
 
-            <Card className="p-5">
+            <Card className="p-5 transition-all duration-250 ease-out hover:shadow-soft-lg hover:-translate-y-0.5 hover:border-slate-300">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center">
                   <svg className="w-5 h-5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -158,25 +158,25 @@ export default function ClientDashboard() {
               <Card className="overflow-hidden p-0">
                 <div className="divide-y divide-slate-100">
                   {projects.map(p => (
-                    <div 
-                      key={p.id} 
-                      className="flex items-center justify-between p-4 hover:bg-slate-50 cursor-pointer transition-colors"
+                    <div
+                      key={p.id}
+                      className="group flex items-center justify-between p-4 hover:bg-slate-50 cursor-pointer transition-colors duration-200 ease-out"
                       onClick={() => navigate(`/projects/${p.id}`)}
                     >
                       <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center">
-                          <svg className="w-5 h-5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center transition-colors duration-200 group-hover:bg-trust-blue-light">
+                          <svg className="w-5 h-5 text-slate-500 transition-colors duration-200 group-hover:text-trust-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                           </svg>
                         </div>
                         <div>
-                          <p className="font-semibold text-slate-900">{p.title}</p>
-                          <p className="text-sm text-slate-500">Budget: ₹{Number(p.totalBudget).toLocaleString()}</p>
+                          <p className="font-semibold text-slate-900 group-hover:text-trust-blue transition-colors duration-200">{p.title}</p>
+                          <p className="text-sm text-slate-500">Budget: &#8377;{Number(p.totalBudget).toLocaleString()}</p>
                         </div>
                       </div>
                       <div className="flex items-center gap-3">
                         <Badge status={p.status} />
-                        <svg className="w-5 h-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-5 h-5 text-slate-300 transition-all duration-200 group-hover:text-slate-500 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
                       </div>

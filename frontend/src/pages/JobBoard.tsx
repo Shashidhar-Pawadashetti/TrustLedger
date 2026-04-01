@@ -75,9 +75,9 @@ export default function JobBoard() {
           </p>
         </Card>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-4 stagger-children">
           {projects.map((p: any) => (
-            <Card key={p.id} className="p-6 animate-fade-in">
+            <Card key={p.id} className="p-6 animate-fade-in transition-all duration-250 ease-out hover:shadow-soft-lg hover:-translate-y-0.5 hover:border-slate-300">
               <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
                 {/* Project info */}
                 <div className="flex-1 space-y-3">
@@ -122,9 +122,17 @@ export default function JobBoard() {
                     variant={appliedIds.has(p.id) ? "outline" : "success"}
                     disabled={isPending || appliedIds.has(p.id)}
                     onClick={() => handleApply(p.id)}
-                    className="w-full lg:w-auto"
+                    className="w-full lg:w-auto min-w-[110px]"
                   >
-                    {appliedIds.has(p.id) ? (
+                    {isPending && !appliedIds.has(p.id) ? (
+                      <>
+                        <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                        </svg>
+                        Applying...
+                      </>
+                    ) : appliedIds.has(p.id) ? (
                       <>
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
